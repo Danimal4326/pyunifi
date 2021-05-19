@@ -29,7 +29,7 @@ ap_names = dict([(ap['mac'], ap.get('name')) for ap in all_aps])
 kicks = defaultdict(int)
 held = defaultdict(bool)
 while True:
-    res = c.get_clients()
+    res = [ x for x in c.get_clients() if not x['is_wired'] ]
     now = time.time()
 
     if args.debug:
